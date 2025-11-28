@@ -1,7 +1,3 @@
-/* ==========================================================
-   STILE GENERALE
-   ========================================================== */
-
 *,
 *::before,
 *::after {
@@ -28,6 +24,19 @@
   --transition-fast: 0.18s ease-out;
   --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
     "Helvetica Neue", Arial, sans-serif;
+
+  /* PALETTE CARD – stessa per MOBILE e DESKTOP */
+  --card-green: linear-gradient(135deg, #00c853, #00e676);
+  --card-blue: linear-gradient(135deg, #1b78ff, #4dabff);
+  --card-pink: linear-gradient(135deg, #ff3d9a, #ff7bbf);
+  --card-teal: linear-gradient(135deg, #26c6da, #00acc1);
+  --card-yellow: linear-gradient(135deg, #f6a623, #ffca28);
+  --card-cyan: linear-gradient(135deg, #19c1d8, #4dd0e1);
+  --card-orange: linear-gradient(135deg, #ff8a65, #ff7043);
+  --card-green2: linear-gradient(135deg, #43a047, #66bb6a);
+  --card-blue2: linear-gradient(135deg, #3949ab, #5c6bc0);
+  --card-purple: linear-gradient(135deg, #7e57c2, #9575cd);
+  --card-dark: linear-gradient(135deg, #263238, #37474f);
 }
 
 html,
@@ -43,180 +52,29 @@ body {
   color: var(--txt-main);
 }
 
-/* Wrapper generale */
+/* =========================================
+   STRUTTURA BASE
+   ========================================= */
+
 .app-shell {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ==========================================================
-   VISTA MOBILE – CARD COLORATE
-   (mostrata solo sotto i 768px)
-   ========================================================== */
-
+/* Di default mostro desktop, nascondo mobile.
+   Poi con le media query invertiamo sui telefoni. */
 .mobile-dashboard {
-  min-height: 100vh;
-  padding: 16px 14px 28px;
-  display: none; /* di default nascosta, si vede solo su mobile */
+  display: none;
 }
-
-.m-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.m-logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.m-logo {
-  height: 60px;
-  width: auto;
-}
-
-/* hamburger tondo come nella tua app */
-.m-hamburger {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.95));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
-  cursor: pointer;
-  position: relative;
-}
-
-.m-hamburger span {
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: #ffffff;
-  box-shadow: 0 -5px 0 #ffffff, 0 5px 0 #ffffff;
-}
-
-.m-main {
-  margin-top: 6px;
-}
-
-/* griglia delle card – 2 colonne */
-.m-card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-/* Card base mobile */
-.m-card {
-  position: relative;
-  border-radius: 26px;
-  padding: 16px 14px 18px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-  color: #ffffff;
-  text-align: left;
-  overflow: hidden;
-  border: none;
-  outline: none;
-}
-
-/* label "NUOVO/I" */
-.m-card-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  opacity: 0.9;
-}
-
-/* titolo card */
-.m-card-title {
-  margin-top: 4px;
-  font-size: 1rem;
-  font-weight: 800;
-  max-width: 80%;
-}
-
-/* badge rosso */
-.m-card-badge {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #ffeef5 0, #ff1744 40%, #c51162 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.16);
-}
-
-/* icona */
-.m-card-icon {
-  position: absolute;
-  left: 12px;
-  bottom: 10px;
-  font-size: 1.6rem;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.8));
-}
-
-/* card a tutta larghezza */
-.m-card-wide {
-  grid-column: 1 / -1;
-}
-
-/* Colori card (simili alla tua grafica) */
-.m-card-green {
-  background: linear-gradient(145deg, #00c853, #009624);
-}
-.m-card-blue {
-  background: linear-gradient(145deg, #2196f3, #1e88e5);
-}
-.m-card-pink {
-  background: linear-gradient(145deg, #ff4081, #f50057);
-}
-.m-card-teal {
-  background: linear-gradient(145deg, #26a69a, #00897b);
-}
-.m-card-yellow {
-  background: linear-gradient(145deg, #ffd54f, #fbc02d);
-  color: #102027;
-}
-.m-card-cyan {
-  background: linear-gradient(145deg, #29b6f6, #0288d1);
-}
-.m-card-orange {
-  background: linear-gradient(145deg, #ffb74d, #ff9800);
-  color: #102027;
-}
-.m-card-green2 {
-  background: linear-gradient(145deg, #66bb6a, #388e3c);
-}
-.m-card-blue2 {
-  background: linear-gradient(145deg, #42a5f5, #1976d2);
-}
-.m-card-purple {
-  background: linear-gradient(145deg, #7e57c2, #5e35b1);
-}
-.m-card-dark {
-  background: linear-gradient(145deg, #00203f, #001220);
-}
-
-/* ==========================================================
-   VISTA DESKTOP – DASHBOARD PC
-   (mostrata solo da 769px in su)
-   ========================================================== */
 
 .desktop-dashboard {
   display: block;
 }
+
+/* =========================================
+   HEADER DESKTOP
+   ========================================= */
 
 .app-header {
   padding: 18px 40px 10px;
@@ -237,29 +95,35 @@ body {
   color: var(--txt-muted);
 }
 
-/* layout principale */
+/* =========================================
+   DASHBOARD DESKTOP
+   ========================================= */
+
 .dashboard {
+  flex: 1;
   padding: 10px 32px 32px;
   display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
+  grid-template-columns: 340px minmax(0, 1fr); /* colonna sinistra un po' più larga */
   gap: 24px;
   align-items: flex-start;
 }
 
+/* Colonna sinistra */
 .dashboard-left {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
+/* Colonna destra */
 .dashboard-right {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 card per riga */
   grid-auto-rows: minmax(150px, auto);
   gap: 18px;
 }
 
-/* CARD PC BASE */
+/* CARD BASE DESKTOP */
 .card {
   background: linear-gradient(145deg, var(--bg-card), #061932);
   border-radius: var(--radius-lg);
@@ -393,7 +257,7 @@ body {
   color: var(--txt-muted);
 }
 
-/* CALENDARIO */
+/* CALENDARIO (più grande) */
 .card-calendar-big {
   min-height: 260px;
 }
@@ -432,7 +296,7 @@ body {
   color: #fff;
 }
 
-/* ASSENTI / PERMESSI */
+/* ASSENTI / PERMESSI (più alta) */
 .card-tall {
   display: flex;
   flex-direction: column;
@@ -454,13 +318,9 @@ body {
   margin-top: 4px;
 }
 
-/* CARD TURNO / APPOGGIO */
+/* CARD UNICA TURNO + APPOGGIO */
 .card-wide {
-  grid-column: 1 / -1;
-}
-
-.card-turno-appoggio {
-  background: linear-gradient(135deg, #1cc88a 0, #19c1d8 50%, #0b2340 100%);
+  grid-column: 1 / -1; /* prende tutta la larghezza della colonna destra */
 }
 
 .turno-appoggio-grid {
@@ -474,7 +334,7 @@ body {
   min-height: 90px;
 }
 
-/* CARD GRANDI */
+/* 6+ CARD GRANDI (3 per riga) */
 .card-big {
   min-height: 150px;
   display: flex;
@@ -482,33 +342,62 @@ body {
   justify-content: space-between;
 }
 
-/* colori card singole */
+/* ==============================
+   COLORI CARD DESKTOP = MOBILE
+   ============================== */
+
+/* Assenti / Permessi → verde come mobile */
+.card-assenti {
+  background: var(--card-green);
+  color: #fff;
+}
+
+/* Farmacia di turno (card grande in alto) → blu come mobile */
+.card-turno-appoggio {
+  background: var(--card-blue);
+  color: #fff;
+}
+
+/* Consegne / Ritiri → blu2 */
 .card-consegne {
-  background: linear-gradient(140deg, #1b78ff, #0b2340);
+  background: var(--card-blue2);
+  color: #fff;
 }
 
+/* Prodotti in scadenza → arancione */
 .card-scadenze {
-  background: linear-gradient(140deg, #f6a623, #0b2340);
+  background: var(--card-orange);
+  color: #fff;
 }
 
+/* Consumabili → verde2 */
 .card-consumabili {
-  background: linear-gradient(140deg, #19c1d8, #0b2340);
+  background: var(--card-green2);
+  color: #fff;
 }
 
+/* Cambio cassa → viola */
 .card-cassa {
-  background: linear-gradient(140deg, #1b78ff, #0b2340);
+  background: var(--card-purple);
+  color: #fff;
 }
 
+/* Magazziniera → ciano */
 .card-magazziniera {
-  background: linear-gradient(140deg, #29b6f6, #0b2340);
+  background: var(--card-cyan);
+  color: #fff;
 }
 
+/* Comunicazioni → rosa */
 .card-comunicazioni {
-  background: linear-gradient(140deg, #ff3d9a, #0b2340);
+  background: var(--card-pink);
+  color: #fff;
 }
 
+/* Archivio file → scuro */
 .card-archivio {
-  background: linear-gradient(140deg, #7a5cff, #0b2340);
+  background: var(--card-dark);
+  color: #fff;
 }
 
 /* Bottoni */
@@ -548,11 +437,182 @@ body {
   color: #d1e2ff;
 }
 
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
+/* =========================================
+   MOBILE DASHBOARD – CARD STILE PORTALE
+   ========================================= */
 
-/* Desktop a una colonna sotto 1100px */
+.m-header {
+  padding: 14px 16px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.m-logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.m-logo {
+  height: 32px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.m-hamburger {
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.m-hamburger span {
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffffff;
+  position: relative;
+}
+
+.m-hamburger span::before,
+.m-hamburger span::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffffff;
+  left: 0;
+}
+
+.m-hamburger span::before {
+  top: -5px;
+}
+
+.m-hamburger span::after {
+  top: 5px;
+}
+
+.m-main {
+  padding: 4px 12px 16px;
+}
+
+.m-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Card base mobile */
+.m-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 86px;
+  color: #ffffff;
+}
+
+.m-card-label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
+}
+
+.m-card-title {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.m-card-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  min-width: 20px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.m-card-icon {
+  position: absolute;
+  right: -6px;
+  bottom: -4px;
+  font-size: 1.8rem;
+  opacity: 0.22;
+}
+
+/* Card larga mobile (Archivio file) */
+.m-card-wide {
+  grid-column: 1 / -1;
+}
+
+/* COLORI CARD MOBILE – agganciati alle variabili usate anche su desktop */
+.m-card-green {
+  background: var(--card-green);
+}
+
+.m-card-blue {
+  background: var(--card-blue);
+}
+
+.m-card-pink {
+  background: var(--card-pink);
+}
+
+.m-card-teal {
+  background: var(--card-teal);
+}
+
+.m-card-yellow {
+  background: var(--card-yellow);
+}
+
+.m-card-cyan {
+  background: var(--card-cyan);
+}
+
+.m-card-orange {
+  background: var(--card-orange);
+}
+
+.m-card-green2 {
+  background: var(--card-green2);
+}
+
+.m-card-blue2 {
+  background: var(--card-blue2);
+}
+
+.m-card-purple {
+  background: var(--card-purple);
+}
+
+.m-card-dark {
+  background: var(--card-dark);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Tablet: colonna unica, card desktop 2 per riga */
 @media (max-width: 1100px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -581,7 +641,7 @@ body {
   }
 }
 
-/* Switch tra mobile e desktop */
+/* Mobile: nascondo desktop, mostro mobile, card desktop 1 per riga */
 @media (max-width: 768px) {
   .desktop-dashboard {
     display: none;
@@ -591,247 +651,27 @@ body {
     display: block;
   }
 
-  .turno-appoggio-grid {
+  .app-header {
+    padding-inline: 16px;
+  }
+
+  .dashboard {
+    padding-inline: 16px;
+  }
+
+  .dashboard-left {
+    flex-direction: column;
+  }
+
+  .dashboard-right {
     grid-template-columns: 1fr;
   }
 
   .card {
     border-radius: var(--radius-md);
   }
-}
-/* =============== SISTEMA CARD SU TELEFONO =================== */
-/* Applica SOLO sotto i 768px di larghezza (iPhone, smartphone) */
-@media (max-width: 768px) {
 
-  /* Contenitore di tutte le card in home
-     (se nel tuo codice si chiama in modo diverso, sostituisci il selettore) */
-  .cards-grid,
-  .home-cards,
-  .dashboard-cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 colonne fisse */
-    gap: 14px;                                        /* spazio tra le card */
-  }
-
-  /* Singola card “tasto” della home */
-  .card-home,
-  .home-card,
-  .cards-grid .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 14px 16px 12px;
-    min-height: 120px;       /* tutte più o meno uguali in altezza */
-    border-radius: 24px;
-  }
-
-  /* Testo principale della card (Assenti / Permessi, Prodotti in scadenza, ecc.) */
-  .card-home-title,
-  .card .card-title,
-  .card-title-main {
-    font-size: 0.95rem;
-    line-height: 1.15;       /* evita che le righe si schiaccino una sull’altra */
-    font-weight: 700;
-  }
-
-  /* Scritte piccole tipo "NUOVO / NUOVI" */
-  .card-home-label,
-  .card-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-  }
-
-  /* Emoji / icona nella card */
-  .card-home-icon,
-  .card-icon-emoji {
-    font-size: 1.4rem;
-    margin-bottom: 6px;
-  }
-
-  /* Pallino rosso con il numero */
-  .card-badge,
-  .card-notify {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-  }
-}
-/* ====== FIX POSIZIONE ICONA + TESTO SU MOBILE ====== */
-@media (max-width: 768px) {
-
-  /* Ogni card della home */
-  .home-card, 
-  .card-home, 
-  .cards-grid .card {
-    position: relative;
-    padding-top: 38px !important;  /* spazio per l’icona */
-  }
-
-  /* Icona / Emoji */
-  .card-icon-emoji,
-  .card-emoji,
-  .card .emoji {
-    position: absolute;
-    top: 12px;
-    left: 14px;
-    font-size: 1.6rem;
-    margin: 0;
-    z-index: 2;       /* sopra lo sfondo */
-  }
-
-  /* Testo principale della card */
-  .card-title,
-  .card-home-title,
-  .card .title {
-    display: block;
-    margin-top: 6px;
-    line-height: 1.2;
-    font-size: 1rem;
-    font-weight: 700;
-  }
-
-  /* Label NUOVO / NUOVI */
-  .card-label,
-  .card .subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    margin-bottom: 4px;
-    display: block;
-  }
-
-  /* Badge rosso */
-  .card-badge,
-  .badge-count {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 3;
-  }
-}
-/* ============================
-   SEZIONE MOBILE CORRETTA
-   ============================ */
-
-@media (max-width: 768px) {
-
-  /* Contenitore mobile */
-  .mobile-dashboard {
-    display: block;
-    background: #02172c;
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
-
-  /* Header mobile */
-  .m-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px;
-  }
-
-  .m-logo {
-    width: 150px;
-  }
-
-  .m-hamburger {
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.12);
-    border: none;
-  }
-
-  /* GRID CARD */
-  .m-card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    padding: 18px;
-  }
-
-  /* CARD BASE MOBILE */
-  .m-card {
-    position: relative;
-    padding: 42px 16px 18px 16px; /* spazio per iconcina */
-    border-radius: 22px;
-    color: #fff;
-    font-weight: 600;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    overflow: hidden;
-    min-height: 120px;
-  }
-
-  /* ICONA MOBILE — CORRETTA */
-  .m-card-icon {
-    position: absolute;
-    top: 10px;
-    left: 12px;
-    font-size: 2rem;
-    line-height: 1;
-    z-index: 3;
-  }
-
-  /* BADGE ROSSO */
-  .m-card-badge {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    background: #ff1744;
-    padding: 4px 8px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
-  /* Label NUOVO / NUOVI */
-  .m-card-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    opacity: 0.9;
-    margin-bottom: 4px;
-  }
-
-  /* Nomi card corretti */
-  .m-card-title {
-    font-size: 1.0rem;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-top: 4px;
-  }
-
-  /* CARD GRANDI (ARCHIVIO FILE) */
-  .m-card-wide {
-    grid-column: 1 / -1;
-    min-height: 90px;
-  }
-
-  /* COLORI CARD (uguali alla tua grafica) */
-  .m-card-green { background: #0fb357; }
-  .m-card-blue { background: #248bff; }
-  .m-card-pink { background: #ff2e8a; }
-  .m-card-teal { background: #15b7a5; }
-  .m-card-yellow { background: #f4c025; }
-  .m-card-cyan { background: #249cff; }
-  .m-card-orange { background: #ff9d1c; }
-  .m-card-green2 { background: #00b671; }
-  .m-card-blue2 { background: #1d7bff; }
-  .m-card-purple { background: #7a1cff; }
-  .m-card-dark { background: #082038; }
-
-  /* Nascondo la versione desktop su telefono */
-  .desktop-dashboard {
-    display: none !important;
-  }
-}
-
-/* ============================
-   VERSIONE DESKTOP (TUOI FILE)
-   ============================ */
-
-@media (min-width: 769px) {
-  .mobile-dashboard {
-    display: none !important;
+  .turno-appoggio-grid {
+    grid-template-columns: 1fr;
   }
 }

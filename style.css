@@ -657,3 +657,55 @@ body {
     right: 10px;
   }
 }
+/* ====== FIX POSIZIONE ICONA + TESTO SU MOBILE ====== */
+@media (max-width: 768px) {
+
+  /* Ogni card della home */
+  .home-card, 
+  .card-home, 
+  .cards-grid .card {
+    position: relative;
+    padding-top: 38px !important;  /* spazio per l’icona */
+  }
+
+  /* Icona / Emoji */
+  .card-icon-emoji,
+  .card-emoji,
+  .card .emoji {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    font-size: 1.6rem;
+    margin: 0;
+    z-index: 2;       /* sopra lo sfondo */
+  }
+
+  /* Testo principale della card */
+  .card-title,
+  .card-home-title,
+  .card .title {
+    display: block;
+    margin-top: 6px;
+    line-height: 1.2;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  /* Label NUOVO / NUOVI */
+  .card-label,
+  .card .subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  /* Badge rosso */
+  .card-badge,
+  .badge-count {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 3;
+  }
+}

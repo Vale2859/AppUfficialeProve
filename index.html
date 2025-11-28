@@ -27,14 +27,14 @@
         <section class="m-card-grid">
 
           <!-- RIGA 1 -->
-          <button class="m-card m-card-green">
+          <button class="m-card m-card-green" data-section="assenti">
             <div class="m-card-label">NUOVI</div>
             <div class="m-card-title">Assenti / Permessi</div>
             <div class="m-card-badge">2</div>
             <div class="m-card-icon">📅</div>
           </button>
 
-          <button class="m-card m-card-blue">
+          <button class="m-card m-card-blue" data-section="turno">
             <div class="m-card-label">NUOVO</div>
             <div class="m-card-title">Farmacia di turno</div>
             <div class="m-card-badge">1</div>
@@ -150,12 +150,12 @@
           </div>
 
           <!-- ASSENTI / PERMESSI -->
-          <div class="card card-tall card-tall-big card-assenti">
+          <div class="card card-tall card-tall-big card-assenti" data-section="assenti">
             <div class="card-header">
               <span class="card-title">Assenti / Permessi</span>
             </div>
-            <ul class="card-list" id="assenti-list">
-              <li>Nessun assente registrato oggi.</li>
+            <ul class="card-list">
+              <li>Click per vedere assenze approvate.</li>
             </ul>
             <button class="btn-primary btn-full">Vai alla gestione assenze</button>
           </div>
@@ -166,7 +166,7 @@
         <section class="dashboard-right">
 
           <!-- CARD UNICA: TURNO + APPOGGIO -->
-          <div class="card card-wide card-turno-appoggio">
+          <div class="card card-wide card-turno-appoggio" data-section="turno">
             <div class="turno-appoggio-grid">
               <div class="turno-block">
                 <div class="card-header">
@@ -269,6 +269,55 @@
         </section>
       </main>
     </div>
+
+    <!-- ======================
+         SEZIONE DETTAGLIO: ASSENTI / PERMESSI
+         (uguale su telefono e PC)
+         ====================== -->
+    <section id="sezione-assenti" class="sezione-dettaglio" style="display:none; padding:16px 16px 32px;">
+      <div style="max-width:1000px; margin:0 auto;">
+        <button class="btn-primary" data-close="sezione" style="margin-bottom:14px;">
+          ← Torna alla dashboard
+        </button>
+
+        <h2 style="margin:0 0 4px;">Assenti / Permessi approvati</h2>
+        <p style="margin:0 0 12px; font-size:0.9rem; opacity:0.85;">
+          Vista rapida delle assenze già approvate (dati di esempio).
+        </p>
+
+        <label style="font-size:0.85rem; display:block; margin-bottom:10px;">
+          Ruolo demo:
+          <select id="ruolo-assenti" style="margin-left:8px; padding:4px 8px; border-radius:8px; border:none;">
+            <option value="farmacia">Farmacia (generico)</option>
+            <option value="titolare">Titolare</option>
+            <option value="dipendente">Dipendente</option>
+          </select>
+        </label>
+
+        <div id="assenti-oggi" style="margin-bottom:14px;"></div>
+        <div id="assenti-prossimi"></div>
+      </div>
+    </section>
+
+    <!-- ======================
+         SEZIONE DETTAGLIO: FARMACIA DI TURNO
+         ====================== -->
+    <section id="sezione-turno" class="sezione-dettaglio" style="display:none; padding:16px 16px 32px;">
+      <div style="max-width:1000px; margin:0 auto;">
+        <button class="btn-primary" data-close="sezione" style="margin-bottom:14px;">
+          ← Torna alla dashboard
+        </button>
+
+        <h2 style="margin:0 0 4px;">Farmacia di turno</h2>
+        <p style="margin:0 0 12px; font-size:0.9rem; opacity:0.85;">
+          Turno di oggi in evidenza e prossimi turni programmati (dati demo).
+        </p>
+
+        <div id="turno-oggi" style="margin-bottom:14px;"></div>
+        <div id="turno-prossimi"></div>
+      </div>
+    </section>
+
   </div>
 
   <script src="script.js"></script>

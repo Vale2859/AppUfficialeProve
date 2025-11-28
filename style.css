@@ -599,3 +599,61 @@ body {
     border-radius: var(--radius-md);
   }
 }
+/* =============== SISTEMA CARD SU TELEFONO =================== */
+/* Applica SOLO sotto i 768px di larghezza (iPhone, smartphone) */
+@media (max-width: 768px) {
+
+  /* Contenitore di tutte le card in home
+     (se nel tuo codice si chiama in modo diverso, sostituisci il selettore) */
+  .cards-grid,
+  .home-cards,
+  .dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 colonne fisse */
+    gap: 14px;                                        /* spazio tra le card */
+  }
+
+  /* Singola card “tasto” della home */
+  .card-home,
+  .home-card,
+  .cards-grid .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px 16px 12px;
+    min-height: 120px;       /* tutte più o meno uguali in altezza */
+    border-radius: 24px;
+  }
+
+  /* Testo principale della card (Assenti / Permessi, Prodotti in scadenza, ecc.) */
+  .card-home-title,
+  .card .card-title,
+  .card-title-main {
+    font-size: 0.95rem;
+    line-height: 1.15;       /* evita che le righe si schiaccino una sull’altra */
+    font-weight: 700;
+  }
+
+  /* Scritte piccole tipo "NUOVO / NUOVI" */
+  .card-home-label,
+  .card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* Emoji / icona nella card */
+  .card-home-icon,
+  .card-icon-emoji {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+
+  /* Pallino rosso con il numero */
+  .card-badge,
+  .card-notify {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+  }
+}

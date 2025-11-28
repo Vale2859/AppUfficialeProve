@@ -709,3 +709,129 @@ body {
     z-index: 3;
   }
 }
+/* ============================
+   SEZIONE MOBILE CORRETTA
+   ============================ */
+
+@media (max-width: 768px) {
+
+  /* Contenitore mobile */
+  .mobile-dashboard {
+    display: block;
+    background: #02172c;
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  /* Header mobile */
+  .m-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+  }
+
+  .m-logo {
+    width: 150px;
+  }
+
+  .m-hamburger {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    border: none;
+  }
+
+  /* GRID CARD */
+  .m-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 18px;
+  }
+
+  /* CARD BASE MOBILE */
+  .m-card {
+    position: relative;
+    padding: 42px 16px 18px 16px; /* spazio per iconcina */
+    border-radius: 22px;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    overflow: hidden;
+    min-height: 120px;
+  }
+
+  /* ICONA MOBILE — CORRETTA */
+  .m-card-icon {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-size: 2rem;
+    line-height: 1;
+    z-index: 3;
+  }
+
+  /* BADGE ROSSO */
+  .m-card-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: #ff1744;
+    padding: 4px 8px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* Label NUOVO / NUOVI */
+  .m-card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    opacity: 0.9;
+    margin-bottom: 4px;
+  }
+
+  /* Nomi card corretti */
+  .m-card-title {
+    font-size: 1.0rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  /* CARD GRANDI (ARCHIVIO FILE) */
+  .m-card-wide {
+    grid-column: 1 / -1;
+    min-height: 90px;
+  }
+
+  /* COLORI CARD (uguali alla tua grafica) */
+  .m-card-green { background: #0fb357; }
+  .m-card-blue { background: #248bff; }
+  .m-card-pink { background: #ff2e8a; }
+  .m-card-teal { background: #15b7a5; }
+  .m-card-yellow { background: #f4c025; }
+  .m-card-cyan { background: #249cff; }
+  .m-card-orange { background: #ff9d1c; }
+  .m-card-green2 { background: #00b671; }
+  .m-card-blue2 { background: #1d7bff; }
+  .m-card-purple { background: #7a1cff; }
+  .m-card-dark { background: #082038; }
+
+  /* Nascondo la versione desktop su telefono */
+  .desktop-dashboard {
+    display: none !important;
+  }
+}
+
+/* ============================
+   VERSIONE DESKTOP (TUOI FILE)
+   ============================ */
+
+@media (min-width: 769px) {
+  .mobile-dashboard {
+    display: none !important;
+  }
+}

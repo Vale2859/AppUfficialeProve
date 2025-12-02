@@ -2,25 +2,59 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Fantasanremo - Server di Famiglia</title>
+  <title>Fantasanremo di Famiglia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app">
     <header class="app-header">
-      <h1>Fantasanremo di Famiglia</h1>
-      <p>Gestisci concorrenti, squadre dei giocatori e classifica finale.</p>
+      <div class="header-top">
+        <div>
+          <h1>Fantasanremo di Famiglia</h1>
+          <p>Mini server per parenti e amici • tutto nel tuo browser</p>
+        </div>
+        <div class="badge-season">
+          <span>Stagione</span>
+          <strong>2025</strong>
+        </div>
+      </div>
     </header>
 
     <main class="app-main">
-      <!-- Sezione concorrenti -->
-      <section class="card">
-        <h2>1. Imposta i 20 concorrenti</h2>
-        <p class="card-desc">
-          Modifica i nomi dei concorrenti se vuoi. Clicca su <strong>Salva concorrenti</strong> per aggiornare tutto.
-        </p>
-        <div class="table-wrapper">
+      <!-- Barra riassuntiva -->
+      <section class="summary">
+        <div class="summary-card">
+          <span class="summary-label">Concorrenti</span>
+          <span class="summary-value" id="summary-contestants">20</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Giocatori</span>
+          <span class="summary-value" id="summary-players">0</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-label">Leader</span>
+          <span class="summary-value" id="summary-leader">–</span>
+          <span class="summary-extra" id="summary-leader-score"></span>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="contestants">🎤 Concorrenti</button>
+        <button class="tab-btn" data-tab="players">👥 Giocatori</button>
+        <button class="tab-btn" data-tab="scores">⭐ Punteggi</button>
+        <button class="tab-btn" data-tab="ranking">🏆 Classifica</button>
+      </nav>
+
+      <!-- Scheda Concorrenti -->
+      <section class="card tab-content active" data-tab-content="contestants">
+        <div class="card-header">
+          <h2>Concorrenti in gara</h2>
+          <p>Rinomina i 20 concorrenti a tuo piacere.</p>
+        </div>
+
+        <div class="table-wrapper compact">
           <table>
             <thead>
               <tr>
@@ -33,15 +67,19 @@
             </tbody>
           </table>
         </div>
-        <button id="save-contestants-btn" class="btn primary">Salva concorrenti</button>
+
+        <div class="card-actions">
+          <button id="save-contestants-btn" class="btn primary">Salva concorrenti</button>
+          <span class="hint">I nomi verranno aggiornati ovunque (squadre, punteggi, classifica).</span>
+        </div>
       </section>
 
-      <!-- Sezione giocatori -->
-      <section class="card">
-        <h2>2. Aggiungi i giocatori e le loro squadre</h2>
-        <p class="card-desc">
-          Ogni giocatore sceglie <strong>5 concorrenti</strong>. Le squadre vengono salvate e usate per i punteggi.
-        </p>
+      <!-- Scheda Giocatori -->
+      <section class="card tab-content" data-tab-content="players">
+        <div class="card-header">
+          <h2>Giocatori & squadre</h2>
+          <p>Crea le squadre da 5 concorrenti per amici e parenti.</p>
+        </div>
 
         <form id="player-form" class="player-form">
           <div class="form-row">
@@ -49,63 +87,63 @@
             <input type="text" id="player-name" required placeholder="Es. Zio Pino">
           </div>
 
-          <div class="form-row grid-5">
-            <div>
+          <div class="form-row picks-row">
+            <div class="pick-col">
               <label for="pick-1">Scelta 1</label>
               <select id="pick-1" required></select>
             </div>
-            <div>
+            <div class="pick-col">
               <label for="pick-2">Scelta 2</label>
               <select id="pick-2" required></select>
             </div>
-            <div>
+            <div class="pick-col">
               <label for="pick-3">Scelta 3</label>
               <select id="pick-3" required></select>
             </div>
-            <div>
+            <div class="pick-col">
               <label for="pick-4">Scelta 4</label>
               <select id="pick-4" required></select>
             </div>
-            <div>
+            <div class="pick-col">
               <label for="pick-5">Scelta 5</label>
               <select id="pick-5" required></select>
             </div>
           </div>
 
-          <p class="note">
-            Suggerimento: evita di scegliere lo stesso concorrente due volte, il sistema ti avvisa se ci sono doppioni.
-          </p>
-
-          <button type="submit" class="btn primary">Aggiungi giocatore</button>
+          <div class="card-actions">
+            <button type="submit" class="btn primary">+ Aggiungi giocatore</button>
+            <span class="hint">Se scegli lo stesso concorrente più volte il sistema ti avvisa.</span>
+          </div>
         </form>
 
-        <h3>Giocatori iscritti</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Giocatore</th>
-                <th>Squadra (5 concorrenti)</th>
-                <th>Punteggio totale</th>
-                <th>Azioni</th>
-              </tr>
-            </thead>
-            <tbody id="players-body">
-              <!-- generato da script.js -->
-            </tbody>
-          </table>
+        <div class="sub-card">
+          <h3>Giocatori iscritti</h3>
+          <div class="table-wrapper compact">
+            <table>
+              <thead>
+                <tr>
+                  <th>Giocatore</th>
+                  <th>Squadra (5)</th>
+                  <th>Punti</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="players-body">
+                <!-- generato da script.js -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
-      <!-- Sezione punteggi e classifica -->
-      <section class="card">
-        <h2>3. Inserisci i punteggi dei concorrenti</h2>
-        <p class="card-desc">
-          Quando hai deciso i punteggi (es. in base alla classifica finale o al regolamento che usate),
-          inseriscili qui. Il sistema calcola automaticamente i punti di ogni giocatore.
-        </p>
+      <!-- Scheda Punteggi -->
+      <section class="card tab-content" data-tab-content="scores">
+        <div class="card-header">
+          <h2>Punteggi dei concorrenti</h2>
+          <p>Dopo il Festival assegna i punti a ogni concorrente.</p>
+        </div>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper compact">
           <table>
             <thead>
               <tr>
@@ -119,20 +157,26 @@
             </tbody>
           </table>
         </div>
+
+        <div class="card-actions">
+          <span class="hint">Ad ogni modifica la classifica dei giocatori si aggiorna da sola.</span>
+        </div>
       </section>
 
-      <section class="card card-highlight">
-        <h2>4. Classifica finale dei giocatori</h2>
-        <p class="card-desc">
-          Ordinata automaticamente dal punteggio più alto al più basso. Il primo in classifica vince la sorpresa 🎁
-        </p>
+      <!-- Scheda Classifica -->
+      <section class="card card-highlight tab-content" data-tab-content="ranking">
+        <div class="card-header">
+          <h2>Classifica giocatori</h2>
+          <p>Ordine automatico dal punteggio più alto al più basso.</p>
+        </div>
+
         <div class="table-wrapper">
-          <table>
+          <table class="ranking-table">
             <thead>
               <tr>
-                <th>Posizione</th>
+                <th>Pos</th>
                 <th>Giocatore</th>
-                <th>Punteggio totale</th>
+                <th>Punteggio</th>
               </tr>
             </thead>
             <tbody id="ranking-body">
@@ -140,23 +184,16 @@
             </tbody>
           </table>
         </div>
-      </section>
 
-      <section class="card card-secondary">
-        <h2>Strumenti</h2>
-        <div class="tools">
-          <button id="reset-all-btn" class="btn danger">
-            Reset totale (cancella tutto)
-          </button>
-          <p class="note">
-            ⚠️ Attenzione: il reset cancella concorrenti personalizzati, giocatori e punteggi salvati nel browser.
-          </p>
+        <div class="tools-wrapper">
+          <button id="reset-all-btn" class="btn danger">Reset totale</button>
+          <span class="hint">Cancella concorrenti personalizzati, giocatori e punteggi salvati nel browser.</span>
         </div>
       </section>
     </main>
 
     <footer class="app-footer">
-      <p>Fantasanremo di famiglia – gestione locale nel tuo browser (dati salvati in localStorage).</p>
+      <p>Fantasanremo di Famiglia • dati salvati in locale (localStorage).</p>
     </footer>
   </div>
 

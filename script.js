@@ -1,23 +1,25 @@
 // script.js
 
-// Chiave per il salvataggio in localStorage
-const STORAGE_KEY = "fantasanremo_famiglia_v1";
+const STORAGE_KEY = "fantasanremo_famiglia_v2";
 
-// Stato base
 let state = {
   contestants: [],
   players: []
 };
 
-// ---------- Inizializzazione ----------
+// -------- INIZIALIZZAZIONE -------- //
 
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved) {
     try {
       state = JSON.parse(saved);
-    } catch (e) {
-      console.error("Errore parsing localStorage, resetto stato:", e);
+      // se per qualche motivo mancano dati, reinizializza
+      if (!Array.isArray(state.contestants) || state.contestants.length === 0) {
+        initDefaultState();
+      }
+    } catch (err) {
+      console.error("Errore parsing localStorage, reset:", err);
       initDefaultState();
     }
   } else {
@@ -45,7 +47,7 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-// ---------- Render UI ----------
+// -------- RENDER UI -------- //
 
 function renderContestantsEditor() {
   const tbody = document.getElementById("contestants-editor-body");
@@ -97,7 +99,9 @@ function renderContestantsScoreTable() {
       saveState();
       recalcPlayersScores();
       renderRanking();
+      updateSummary();
     });
+
     tdScore.appendChild(input);
 
     tr.appendChild(tdIndex);
@@ -108,10 +112,11 @@ function renderContestantsScoreTable() {
 }
 
 function renderPlayerSelects() {
-  // Riempi tutte le select pick-1...pick-5 con i concorrenti
   for (let i = 1; i <= 5; i++) {
     const select = document.getElementById(`pick-${i}`);
+    if (!select) continue;
     select.innerHTML = "";
+
     state.contestants.forEach((c) => {
       const option = document.createElement("option");
       option.value = c.id;
@@ -130,8 +135,8 @@ function renderPlayersTable() {
     const td = document.createElement("td");
     td.colSpan = 4;
     td.textContent = "Nessun giocatore ancora aggiunto.";
-    td.style.fontSize = "0.85rem";
-    td.style.color = "#6b7280";
+    td.style.fontSize = "0.78rem";
+    td.style.color = "#9ca3af";
     tr.appendChild(td);
     tbody.appendChild(tr);
     return;
@@ -159,14 +164,15 @@ function renderPlayersTable() {
     const btnDelete = document.createElement("button");
     btnDelete.textContent = "Rimuovi";
     btnDelete.className = "btn danger";
-    btnDelete.style.fontSize = "0.8rem";
+    btnDelete.style.fontSize = "0.72rem";
     btnDelete.addEventListener("click", () => {
-      if (confirm(`Vuoi davvero rimuovere il giocatore "${player.name}"?`)) {
+      if (confirm(`Rimuovere il giocatore "${player.name}"?`)) {
         state.players.splice(index, 1);
         recalcPlayersScores();
         saveState();
         renderPlayersTable();
         renderRanking();
+        updateSummary();
       }
     });
     tdActions.appendChild(btnDelete);
@@ -188,16 +194,17 @@ function renderRanking() {
     const tr = document.createElement("tr");
     const td = document.createElement("td");
     td.colSpan = 3;
-    td.textContent = "Aggiungi prima i giocatori e i punteggi dei concorrenti.";
-    td.style.fontSize = "0.85rem";
-    td.style.color = "#6b7280";
+    td.textContent = "Aggiungi almeno un giocatore per vedere la classifica.";
+    td.style.fontSize = "0.78rem";
+    td.style.color = "#9ca3af";
     tr.appendChild(td);
     tbody.appendChild(tr);
     return;
   }
 
-  // Copia e ordina per punteggio
-  const sorted = [...state.players].sort((a, b) => (b.totalScore || 0) - (a.totalScore || 0));
+  const sorted = [...state.players].sort(
+    (a, b) => (b.totalScore || 0) - (a.totalScore || 0)
+  );
 
   sorted.forEach((player, index) => {
     const tr = document.createElement("tr");
@@ -219,10 +226,9 @@ function renderRanking() {
   });
 }
 
-// ---------- Logica punteggi ----------
+// -------- PUNTEGGI -------- //
 
 function recalcPlayersScores() {
-  // Mappa id concorrente -> punteggio
   const scoreMap = {};
   state.contestants.forEach((c) => {
     scoreMap[c.id] = c.score || 0;
@@ -240,19 +246,49 @@ function recalcPlayersScores() {
   renderPlayersTable();
 }
 
-// ---------- Gestione eventi ----------
+// -------- RIASSUNTO IN ALTO -------- //
+
+function updateSummary() {
+  const elContestants = document.getElementById("summary-contestants");
+  const elPlayers = document.getElementById("summary-players");
+  const elLeader = document.getElementById("summary-leader");
+  const elLeaderScore = document.getElementById("summary-leader-score");
+
+  if (elContestants) elContestants.textContent = state.contestants.length;
+  if (elPlayers) elPlayers.textContent = state.players.length;
+
+  if (state.players.length === 0) {
+    if (elLeader) elLeader.textContent = "Nessuno";
+    if (elLeaderScore) elLeaderScore.textContent = "";
+    return;
+  }
+
+  const sorted = [...state.players].sort(
+    (a, b) => (b.totalScore || 0) - (a.totalScore || 0)
+  );
+  const top = sorted[0];
+
+  if (elLeader) elLeader.textContent = top.name;
+  if (elLeaderScore) elLeaderScore.textContent = `${top.totalScore || 0} pt`;
+}
+
+// -------- EVENTI -------- //
 
 function handleSaveContestantsNames() {
-  const inputs = document.querySelectorAll("#contestants-editor-body input[type='text']");
+  const inputs = document.querySelectorAll(
+    "#contestants-editor-body input[type='text']"
+  );
   inputs.forEach((input) => {
     const idx = parseInt(input.dataset.index, 10);
-    state.contestants[idx].name = input.value.trim() || `Concorrente ${idx + 1}`;
+    state.contestants[idx].name =
+      input.value.trim() || `Concorrente ${idx + 1}`;
   });
   saveState();
   renderContestantsScoreTable();
   renderPlayerSelects();
-  renderPlayersTable();
+  recalcPlayersScores();
   renderRanking();
+  updateSummary();
   alert("Concorrenti aggiornati!");
 }
 
@@ -266,7 +302,6 @@ function handleAddPlayer(event) {
     return;
   }
 
-  // Raccogli pick
   const picks = [];
   for (let i = 1; i <= 5; i++) {
     const select = document.getElementById(`pick-${i}`);
@@ -274,12 +309,12 @@ function handleAddPlayer(event) {
     picks.push(id);
   }
 
-  // Controlla doppioni
   const unique = new Set(picks);
   if (unique.size < picks.length) {
-    if (!confirm("Hai selezionato lo stesso concorrente più volte. Vuoi continuare lo stesso?")) {
-      return;
-    }
+    const ok = confirm(
+      "Hai scelto lo stesso concorrente più volte. Vuoi continuare comunque?"
+    );
+    if (!ok) return;
   }
 
   const newPlayer = {
@@ -293,44 +328,79 @@ function handleAddPlayer(event) {
   recalcPlayersScores();
   renderPlayersTable();
   renderRanking();
+  updateSummary();
 
-  // Reset parziale form
   nameInput.value = "";
   alert("Giocatore aggiunto!");
 }
 
 function handleResetAll() {
-  if (!confirm("Sei sicuro di voler cancellare tutti i dati (concorrenti, giocatori, punteggi)?")) {
+  if (
+    !confirm(
+      "Vuoi davvero cancellare tutti i dati (concorrenti, giocatori, punteggi)?"
+    )
+  ) {
     return;
   }
   localStorage.removeItem(STORAGE_KEY);
   initDefaultState();
   renderAll();
+  updateSummary();
   alert("Reset completato.");
 }
 
-// ---------- Render generale ----------
+// Tabs
+function setupTabs() {
+  const buttons = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      // bottoni
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      // contenuti
+      contents.forEach((c) => {
+        if (c.dataset.tabContent === tab) {
+          c.classList.add("active");
+        } else {
+          c.classList.remove("active");
+        }
+      });
+    });
+  });
+}
+
+// -------- RENDER COMPLETO -------- //
 
 function renderAll() {
   renderContestantsEditor();
   renderContestantsScoreTable();
   renderPlayerSelects();
-  recalcPlayersScores(); // questo richiama renderPlayersTable
+  recalcPlayersScores(); // include renderPlayersTable
   renderRanking();
 }
 
-// ---------- Avvio ----------
+// -------- AVVIO -------- //
 
 document.addEventListener("DOMContentLoaded", () => {
   loadState();
   renderAll();
+  updateSummary();
+  setupTabs();
 
-  // Event listeners
   const saveContestantsBtn = document.getElementById("save-contestants-btn");
   const playerForm = document.getElementById("player-form");
   const resetAllBtn = document.getElementById("reset-all-btn");
 
-  saveContestantsBtn.addEventListener("click", handleSaveContestantsNames);
-  playerForm.addEventListener("submit", handleAddPlayer);
-  resetAllBtn.addEventListener("click", handleResetAll);
+  if (saveContestantsBtn) {
+    saveContestantsBtn.addEventListener("click", handleSaveContestantsNames);
+  }
+  if (playerForm) {
+    playerForm.addEventListener("submit", handleAddPlayer);
+  }
+  if (resetAllBtn) {
+    resetAllBtn.addEventListener("click", handleResetAll);
+  }
 });

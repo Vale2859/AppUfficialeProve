@@ -1,202 +1,171 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Fantasanremo di Famiglia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Domus Europa Matera</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="app">
-    <header class="app-header">
-      <div class="header-top">
-        <div>
-          <h1>Fantasanremo di Famiglia</h1>
-          <p>Mini server per parenti e amici • tutto nel tuo browser</p>
-        </div>
-        <div class="badge-season">
-          <span>Stagione</span>
-          <strong>2025</strong>
-        </div>
-      </div>
-    </header>
 
-    <main class="app-main">
-      <!-- Barra riassuntiva -->
-      <section class="summary">
-        <div class="summary-card">
-          <span class="summary-label">Concorrenti</span>
-          <span class="summary-value" id="summary-contestants">20</span>
-        </div>
-        <div class="summary-card">
-          <span class="summary-label">Giocatori</span>
-          <span class="summary-value" id="summary-players">0</span>
-        </div>
-        <div class="summary-card">
-          <span class="summary-label">Leader</span>
-          <span class="summary-value" id="summary-leader">–</span>
-          <span class="summary-extra" id="summary-leader-score"></span>
-        </div>
-      </section>
+<header>
+<div class="container">
 
-      <!-- Tabs -->
-      <nav class="tabs">
-        <button class="tab-btn active" data-tab="contestants">🎤 Concorrenti</button>
-        <button class="tab-btn" data-tab="players">👥 Giocatori</button>
-        <button class="tab-btn" data-tab="scores">⭐ Punteggi</button>
-        <button class="tab-btn" data-tab="ranking">🏆 Classifica</button>
-      </nav>
+<h1>Domus Europa Matera</h1>
 
-      <!-- Scheda Concorrenti -->
-      <section class="card tab-content active" data-tab-content="contestants">
-        <div class="card-header">
-          <h2>Concorrenti in gara</h2>
-          <p>Rinomina i 20 concorrenti a tuo piacere.</p>
-        </div>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#struttura">Struttura</a></li>
+<li><a href="#camere">Camere</a></li>
+<li><a href="#servizi">Servizi</a></li>
+<li><a href="#recensioni">Recensioni</a></li>
+<li><a href="#contatti">Contatti</a></li>
+</ul>
+</nav>
 
-        <div class="table-wrapper compact">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome concorrente</th>
-              </tr>
-            </thead>
-            <tbody id="contestants-editor-body">
-              <!-- generato da script.js -->
-            </tbody>
-          </table>
-        </div>
+<a class="prenota" href="#">Prenota ora</a>
 
-        <div class="card-actions">
-          <button id="save-contestants-btn" class="btn primary">Salva concorrenti</button>
-          <span class="hint">I nomi verranno aggiornati ovunque (squadre, punteggi, classifica).</span>
-        </div>
-      </section>
+</div>
+</header>
 
-      <!-- Scheda Giocatori -->
-      <section class="card tab-content" data-tab-content="players">
-        <div class="card-header">
-          <h2>Giocatori & squadre</h2>
-          <p>Crea le squadre da 5 concorrenti per amici e parenti.</p>
-        </div>
 
-        <form id="player-form" class="player-form">
-          <div class="form-row">
-            <label for="player-name">Nome giocatore</label>
-            <input type="text" id="player-name" required placeholder="Es. Zio Pino">
-          </div>
+<section class="hero" id="home">
 
-          <div class="form-row picks-row">
-            <div class="pick-col">
-              <label for="pick-1">Scelta 1</label>
-              <select id="pick-1" required></select>
-            </div>
-            <div class="pick-col">
-              <label for="pick-2">Scelta 2</label>
-              <select id="pick-2" required></select>
-            </div>
-            <div class="pick-col">
-              <label for="pick-3">Scelta 3</label>
-              <select id="pick-3" required></select>
-            </div>
-            <div class="pick-col">
-              <label for="pick-4">Scelta 4</label>
-              <select id="pick-4" required></select>
-            </div>
-            <div class="pick-col">
-              <label for="pick-5">Scelta 5</label>
-              <select id="pick-5" required></select>
-            </div>
-          </div>
+<div class="hero-text">
 
-          <div class="card-actions">
-            <button type="submit" class="btn primary">+ Aggiungi giocatore</button>
-            <span class="hint">Se scegli lo stesso concorrente più volte il sistema ti avvisa.</span>
-          </div>
-        </form>
+<h2>Benvenuti a Domus Europa Matera</h2>
 
-        <div class="sub-card">
-          <h3>Giocatori iscritti</h3>
-          <div class="table-wrapper compact">
-            <table>
-              <thead>
-                <tr>
-                  <th>Giocatore</th>
-                  <th>Squadra (5)</th>
-                  <th>Punti</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="players-body">
-                <!-- generato da script.js -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+<p>
+Eleganza, comfort e accoglienza nel cuore della splendida città dei Sassi.
+</p>
 
-      <!-- Scheda Punteggi -->
-      <section class="card tab-content" data-tab-content="scores">
-        <div class="card-header">
-          <h2>Punteggi dei concorrenti</h2>
-          <p>Dopo il Festival assegna i punti a ogni concorrente.</p>
-        </div>
+</div>
 
-        <div class="table-wrapper compact">
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Concorrente</th>
-                <th>Punteggio</th>
-              </tr>
-            </thead>
-            <tbody id="contestants-score-body">
-              <!-- generato da script.js -->
-            </tbody>
-          </table>
-        </div>
+</section>
 
-        <div class="card-actions">
-          <span class="hint">Ad ogni modifica la classifica dei giocatori si aggiorna da sola.</span>
-        </div>
-      </section>
 
-      <!-- Scheda Classifica -->
-      <section class="card card-highlight tab-content" data-tab-content="ranking">
-        <div class="card-header">
-          <h2>Classifica giocatori</h2>
-          <p>Ordine automatico dal punteggio più alto al più basso.</p>
-        </div>
+<section class="struttura" id="struttura">
 
-        <div class="table-wrapper">
-          <table class="ranking-table">
-            <thead>
-              <tr>
-                <th>Pos</th>
-                <th>Giocatore</th>
-                <th>Punteggio</th>
-              </tr>
-            </thead>
-            <tbody id="ranking-body">
-              <!-- generato da script.js -->
-            </tbody>
-          </table>
-        </div>
+<h2>La Struttura</h2>
 
-        <div class="tools-wrapper">
-          <button id="reset-all-btn" class="btn danger">Reset totale</button>
-          <span class="hint">Cancella concorrenti personalizzati, giocatori e punteggi salvati nel browser.</span>
-        </div>
-      </section>
-    </main>
+<p>
+Domus Europa Matera è un affittacamere elegante e moderno situato a pochi minuti dal centro storico.
+</p>
 
-    <footer class="app-footer">
-      <p>Fantasanremo di Famiglia • dati salvati in locale (localStorage).</p>
-    </footer>
-  </div>
+<p>
+La struttura dispone di tre camere con bagno privato e una zona comune con cucina e soggiorno.
+</p>
 
-  <script src="script.js"></script>
+</section>
+
+
+<section class="camere" id="camere">
+
+<h2>Le Camere</h2>
+
+<div class="room">
+
+<h3>Camera Elegance</h3>
+
+<p>
+Camera matrimoniale elegante con bagno privato e tutti i comfort.
+</p>
+
+</div>
+
+<div class="room">
+
+<h3>Camera Comfort</h3>
+
+<p>
+Camera luminosa ideale per coppie o viaggiatori singoli.
+</p>
+
+</div>
+
+<div class="room">
+
+<h3>Camera Family</h3>
+
+<p>
+Camera più ampia adatta a famiglie o soggiorni più lunghi.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="servizi" id="servizi">
+
+<h2>Servizi</h2>
+
+<ul>
+
+<li>WiFi gratuito</li>
+<li>Bagno privato</li>
+<li>Aria condizionata</li>
+<li>Cucina in comune</li>
+<li>Zona soggiorno</li>
+<li>Check-in flessibile</li>
+
+</ul>
+
+</section>
+
+
+<section class="recensioni" id="recensioni">
+
+<h2>Recensioni</h2>
+
+<div class="review">
+
+<p>
+“Struttura bellissima e pulitissima. Posizione perfetta per visitare Matera.”
+</p>
+
+<span>Maria - Milano</span>
+
+</div>
+
+
+<div class="review">
+
+<p>
+“Ottima accoglienza e camere molto curate. Torneremo sicuramente.”
+</p>
+
+<span>Luca - Roma</span>
+
+</div>
+
+</section>
+
+
+<section class="contatti" id="contatti">
+
+<h2>Contatti</h2>
+
+<p>Telefono: +39 333 0000000</p>
+
+<p>Email: info@domuseuropamatera.it</p>
+
+<p>Indirizzo: Matera, Italia</p>
+
+</section>
+
+
+<footer>
+
+<p>© Domus Europa Matera</p>
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>

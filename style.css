@@ -8,7 +8,7 @@ color:#333;
 
 header{
 
-background:#111;
+background:#5a2b00;
 color:white;
 padding:15px 0;
 
@@ -21,6 +21,12 @@ justify-content:space-between;
 align-items:center;
 width:90%;
 margin:auto;
+
+}
+
+.logo img{
+
+height:60px;
 
 }
 

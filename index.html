@@ -1,183 +1,134 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Domus Europa Matera</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domus Europa Matera</title>
+  <meta name="description" content="Domus Europa Matera - Affittacamere elegante e accogliente nel cuore di Matera.">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-
-<header>
-
-<div class="container">
-
-<div class="logo">
-<img src="logo.JPG" alt="Domus Europa Matera">
-</div>
-
-<nav>
-
-<ul>
-
-<li><a href="#home">Home</a></li>
-<li><a href="#struttura">Struttura</a></li>
-<li><a href="#camere">Camere</a></li>
-<li><a href="#servizi">Servizi</a></li>
-<li><a href="#recensioni">Recensioni</a></li>
-<li><a href="#contatti">Contatti</a></li>
-
-</ul>
-
-</nav>
-
-<a class="prenota" href="#">Prenota ora</a>
-
-</div>
-
-</header>
-
-
-<section class="hero" id="home">
-
-<div class="hero-text">
-
-<h2>Benvenuti a Domus Europa Matera</h2>
-
-<p>
-Eleganza, comfort e accoglienza nel cuore della splendida città dei Sassi.
-</p>
-
-</div>
-
-</section>
-
-
-<section class="struttura" id="struttura">
-
-<h2>La Struttura</h2>
-
-<p>
-Domus Europa Matera è un affittacamere elegante situato a pochi minuti dal centro storico di Matera.
-</p>
-
-<p>
-La struttura dispone di tre camere con bagno privato e una zona comune con cucina e soggiorno.
-</p>
-
-</section>
-
-
-<section class="camere" id="camere">
-
-<h2>Le Camere</h2>
-
-<div class="room">
-
-<h3>Camera Elegance</h3>
-
-<p>
-Camera matrimoniale elegante con bagno privato e tutti i comfort.
-</p>
-
-</div>
-
-
-<div class="room">
-
-<h3>Camera Comfort</h3>
-
-<p>
-Camera luminosa ideale per coppie o viaggiatori.
-</p>
-
-</div>
-
-
-<div class="room">
-
-<h3>Camera Family</h3>
-
-<p>
-Camera spaziosa perfetta per famiglie.
-</p>
-
-</div>
-
-</section>
-
-
-<section class="servizi" id="servizi">
-
-<h2>Servizi</h2>
-
-<ul>
-
-<li>WiFi gratuito</li>
-<li>Bagno privato</li>
-<li>Aria condizionata</li>
-<li>Cucina in comune</li>
-<li>Zona soggiorno</li>
-<li>Check-in flessibile</li>
-
-</ul>
-
-</section>
-
-
-<section class="recensioni" id="recensioni">
-
-<h2>Recensioni</h2>
-
-<div class="review">
-
-<p>
-“Struttura bellissima e pulitissima. Posizione perfetta per visitare Matera.”
-</p>
-
-<span>Maria - Milano</span>
-
-</div>
-
-
-<div class="review">
-
-<p>
-“Ottima accoglienza e camere molto curate. Torneremo sicuramente.”
-</p>
-
-<span>Luca - Roma</span>
-
-</div>
-
-</section>
-
-
-<section class="contatti" id="contatti">
-
-<h2>Contatti</h2>
-
-<p>Telefono: +39 333 0000000</p>
-<p>Email: info@domuseuropamatera.it</p>
-<p>Indirizzo: Matera, Italia</p>
-
-</section>
-
-
-<footer>
-
-<p>© Domus Europa Matera</p>
-
-</footer>
-
-<script src="script.js"></script>
-
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo-link">
+        <img src="logo.JPG" alt="Domus Europa Matera" class="logo">
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Apri menu">
+        ☰
+      </button>
+
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#struttura">Struttura</a></li>
+          <li><a href="#camere">Camere</a></li>
+          <li><a href="#servizi">Servizi</a></li>
+          <li><a href="#recensioni">Recensioni</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <a class="prenota-btn desktop-btn" href="#contatti">Prenota ora</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <img src="logo.JPG" alt="Logo Domus Europa Matera" class="hero-logo">
+        <h1>Benvenuti a Domus Europa Matera</h1>
+        <p>
+          Eleganza, comfort e accoglienza nel cuore della splendida città dei Sassi.
+        </p>
+        <a class="prenota-btn" href="#contatti">Richiedi disponibilità</a>
+      </div>
+    </section>
+
+    <section class="section" id="struttura">
+      <div class="container small-container">
+        <h2>La Struttura</h2>
+        <p>
+          Domus Europa Matera è un affittacamere elegante situato a pochi minuti dal centro storico di Matera.
+        </p>
+        <p>
+          La struttura dispone di tre camere con bagno privato e una zona comune con cucina e soggiorno.
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt-bg" id="camere">
+      <div class="container">
+        <h2>Le Camere</h2>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Camera Elegance</h3>
+            <p>Camera matrimoniale elegante con bagno privato e tutti i comfort.</p>
+          </article>
+
+          <article class="card">
+            <h3>Camera Comfort</h3>
+            <p>Camera luminosa ideale per coppie o viaggiatori.</p>
+          </article>
+
+          <article class="card">
+            <h3>Camera Family</h3>
+            <p>Camera spaziosa perfetta per famiglie o soggiorni più lunghi.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servizi">
+      <div class="container">
+        <h2>Servizi</h2>
+
+        <div class="services-grid">
+          <div class="service-item">WiFi gratuito</div>
+          <div class="service-item">Bagno privato</div>
+          <div class="service-item">Aria condizionata</div>
+          <div class="service-item">Cucina in comune</div>
+          <div class="service-item">Zona soggiorno</div>
+          <div class="service-item">Check-in flessibile</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-bg" id="recensioni">
+      <div class="container small-container">
+        <h2>Recensioni</h2>
+
+        <div class="review">
+          <p>“Struttura bellissima e pulitissima. Posizione perfetta per visitare Matera.”</p>
+          <span>Maria - Milano</span>
+        </div>
+
+        <div class="review">
+          <p>“Ottima accoglienza e camere molto curate. Torneremo sicuramente.”</p>
+          <span>Luca - Roma</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contatti">
+      <div class="container small-container">
+        <h2>Contatti</h2>
+        <p><strong>Telefono:</strong> +39 333 0000000</p>
+        <p><strong>Email:</strong> info@domuseuropamatera.it</p>
+        <p><strong>Indirizzo:</strong> Matera, Italia</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="logo.JPG" alt="Domus Europa Matera" class="footer-logo">
+      <p>© Domus Europa Matera</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,19 +1,13 @@
-document.querySelectorAll("nav a").forEach(link => {
+const menuToggle = document.getElementById("menu-toggle");
+const siteNav = document.getElementById("site-nav");
+const navLinks = document.querySelectorAll(".site-nav a");
 
-link.addEventListener("click", function(e){
+menuToggle.addEventListener("click", () => {
+  siteNav.classList.toggle("active");
+});
 
-e.preventDefault()
-
-const target = document.querySelector(this.getAttribute("href"))
-
-window.scrollTo({
-
-top: target.offsetTop - 60,
-
-behavior:"smooth"
-
-})
-
-})
-
-})
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    siteNav.classList.remove("active");
+  });
+});

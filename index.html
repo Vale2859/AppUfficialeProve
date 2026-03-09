@@ -9,6 +9,10 @@
 </head>
 <body>
 
+  <div class="topbar">
+    Prenotando direttamente in struttura hai il <strong>10% di sconto</strong> rispetto a Booking
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="logo-link">
@@ -29,10 +33,6 @@
           <li><a href="#contatti">Contatti</a></li>
         </ul>
       </nav>
-
-      <a class="prenota-btn desktop-btn" href="https://www.booking.com/index.it.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaHGIAQGYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Aoi2us0GwAIB0gIkNTc2OTJlZGUtYjZjNi00NTI0LWJjNjItN2M2Mjg2YmY2N2E02AIB4AIB&chal_t=1773050631686&force_referer=" target="_blank" rel="noopener noreferrer">
-        Prenota
-      </a>
     </div>
   </header>
 
@@ -57,14 +57,20 @@
           Eleganza, comfort e accoglienza nel cuore della splendida città dei Sassi.
         </p>
 
-        <div class="hero-buttons">
-          <a class="prenota-btn" href="https://www.booking.com/index.it.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaHGIAQGYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Aoi2us0GwAIB0gIkNTc2OTJlZGUtYjZjNi00NTI0LWJjNjItN2M2Mjg2YmY2N2E02AIB4AIB&chal_t=1773050631686&force_referer=" target="_blank" rel="noopener noreferrer">
-            Prenota su Booking
-          </a>
+        <div class="hero-buttons hero-buttons-column">
+          <p class="prenotazione-info">
+            Per ulteriori informazioni o prenotazioni contattaci via mail o WhatsApp
+          </p>
 
-          <a class="secondary-btn" href="#contatti">
-            Richiedi informazioni
-          </a>
+          <div class="hero-contact-actions">
+            <a class="secondary-btn" href="mailto:info@domuseuropamatera.it">
+              Scrivici via Email
+            </a>
+
+            <a class="secondary-btn" href="https://wa.me/393385252548" target="_blank" rel="noopener noreferrer">
+              Contattaci su WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -84,24 +90,28 @@
     <section class="section alt-bg" id="camere">
       <div class="container">
         <h2>Le Camere</h2>
+        <p class="section-subtitle">Clicca su una camera per vedere tutte le foto</p>
 
         <div class="cards">
-          <article class="card">
+          <article class="card room-card" data-room="elegance">
             <div class="card-image room-1"></div>
             <h3>Camera Elegance</h3>
             <p>Camera matrimoniale elegante con bagno privato e comfort pensati per il relax.</p>
+            <span class="card-link-text">Guarda le foto</span>
           </article>
 
-          <article class="card">
+          <article class="card room-card" data-room="comfort">
             <div class="card-image room-2"></div>
             <h3>Camera Comfort</h3>
             <p>Camera luminosa e accogliente, ideale per coppie o viaggiatori in cerca di tranquillità.</p>
+            <span class="card-link-text">Guarda le foto</span>
           </article>
 
-          <article class="card">
+          <article class="card room-card" data-room="family">
             <div class="card-image room-3"></div>
             <h3>Camera Family</h3>
             <p>Soluzione più spaziosa, perfetta per famiglie o per soggiorni più lunghi.</p>
+            <span class="card-link-text">Guarda le foto</span>
           </article>
         </div>
       </div>
@@ -118,6 +128,8 @@
           <div class="service-item">Cucina in comune</div>
           <div class="service-item">Zona soggiorno</div>
           <div class="service-item">Check-in flessibile</div>
+          <div class="service-item">Parcheggio in struttura gratuito</div>
+          <div class="service-item">Colazione inclusa gratuita</div>
         </div>
       </div>
     </section>
@@ -146,8 +158,8 @@
         <p><strong>Indirizzo:</strong> Matera, Italia</p>
 
         <div class="contact-buttons">
-          <a class="prenota-btn" href="https://www.booking.com/index.it.html?aid=304142&label=gen173nr-10CAEoggI46AdIM1gEaHGIAQGYATO4AQfIAQ3YAQPoAQH4AQGIAgGoAgG4Aoi2us0GwAIB0gIkNTc2OTJlZGUtYjZjNi00NTI0LWJjNjItN2M2Mjg2YmY2N2E02AIB4AIB&chal_t=1773050631686&force_referer=" target="_blank" rel="noopener noreferrer">
-            Prenota su Booking
+          <a class="secondary-btn dark-outline" href="mailto:info@domuseuropamatera.it">
+            Scrivici via Email
           </a>
 
           <a class="secondary-btn dark-outline" href="https://wa.me/393385252548" target="_blank" rel="noopener noreferrer">
@@ -177,6 +189,22 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
       <span class="whatsapp-text">Scrivici su WhatsApp</span>
     </a>
+  </div>
+
+  <!-- MODALE FOTO CAMERE -->
+  <div class="gallery-modal" id="gallery-modal">
+    <div class="gallery-overlay" id="gallery-overlay"></div>
+
+    <div class="gallery-content">
+      <button class="gallery-close" id="gallery-close" aria-label="Chiudi">×</button>
+      <h3 id="gallery-title">Camera</h3>
+
+      <div class="gallery-main-image">
+        <img id="gallery-current-image" src="" alt="Foto camera">
+      </div>
+
+      <div class="gallery-thumbs" id="gallery-thumbs"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>

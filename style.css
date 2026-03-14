@@ -1,147 +1,574 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Domus Europa Matera</title>
-<link rel="stylesheet" href="style.css">
-</head>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-<body>
+html{
+  scroll-behavior:smooth;
+}
 
-<div class="topbar">
-Prenotando direttamente in struttura hai il <strong>10% di sconto</strong> rispetto a Booking
-</div>
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f6f3ef;
+  color:#2f2f2f;
+  line-height:1.5;
+  overflow-x:hidden;
+}
 
-<header>
+img{
+  max-width:100%;
+  display:block;
+}
 
-<img src="logotrasparente.png" class="logo">
+a{
+  text-decoration:none;
+}
 
-<nav>
-<a href="#home">Home</a>
-<a href="#camere">Camere</a>
-<a href="#servizi">Servizi</a>
-<a href="#contatti">Contatti</a>
-</nav>
+button{
+  font:inherit;
+}
 
-</header>
+.container{
+  width:min(1140px, 92%);
+  margin:0 auto;
+}
 
-<section class="hero" id="home">
+.small-container{
+  width:min(760px, 92%);
+  margin:0 auto;
+}
 
-<div class="slider">
+.topbar{
+  background:#c9a06a;
+  color:#fff;
+  text-align:center;
+  padding:10px 14px;
+  font-size:14px;
+  font-weight:700;
+}
 
-<img src="1.jpeg">
-<img src="2.jpeg">
-<img src="3.jpeg">
-<img src="4.jpeg">
-<img src="5.jpeg">
-<img src="6.jpeg">
-<img src="7.jpeg">
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(90,43,0,0.95);
+  backdrop-filter:blur(6px);
+  box-shadow:0 2px 12px rgba(0,0,0,0.12);
+}
 
-</div>
+.header-inner{
+  min-height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
 
-<div class="hero-text">
+.logo-link{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+}
 
-<h1>Domus Europa Matera</h1>
+.logo{
+  height:84px;
+  width:auto;
+}
 
-<p>
-Affittacamere elegante e accogliente nel cuore della splendida città dei Sassi.
-</p>
+.site-nav ul{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
 
-<p class="prenota">
-Per ulteriori informazioni o prenotazioni contattaci via mail o WhatsApp
-</p>
+.site-nav a{
+  color:#fff;
+  font-weight:700;
+  font-size:16px;
+}
 
-<a class="btn" href="mailto:info@domuseuropamatera.it">
-Email
-</a>
+.site-nav a:hover{
+  opacity:0.85;
+}
 
-<a class="btn" href="https://wa.me/393385252548">
-WhatsApp
-</a>
+.menu-toggle{
+  display:none;
+  border:none;
+  background:none;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+}
 
-</div>
+.hero{
+  position:relative;
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
 
-</section>
+.hero-slider{
+  position:absolute;
+  inset:0;
+}
 
-<section id="camere">
+.hero-slider img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  animation:fadeSlider 35s infinite;
+}
 
-<h2>Le Camere</h2>
+.hero-slider img:nth-child(1){animation-delay:0s;}
+.hero-slider img:nth-child(2){animation-delay:5s;}
+.hero-slider img:nth-child(3){animation-delay:10s;}
+.hero-slider img:nth-child(4){animation-delay:15s;}
+.hero-slider img:nth-child(5){animation-delay:20s;}
+.hero-slider img:nth-child(6){animation-delay:25s;}
+.hero-slider img:nth-child(7){animation-delay:30s;}
 
-<div class="camere">
+@keyframes fadeSlider{
+  0%{opacity:0;}
+  5%{opacity:1;}
+  14%{opacity:1;}
+  20%{opacity:0;}
+  100%{opacity:0;}
+}
 
-<div class="camera" onclick="openGallery('elegance')">
-<img src="e1.jpeg">
-<h3>Camera Elegance</h3>
-</div>
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,0.38), rgba(90,43,0,0.52));
+}
 
-<div class="camera" onclick="openGallery('comfort')">
-<img src="c1.jpeg">
-<h3>Camera Comfort</h3>
-</div>
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:#fff;
+}
 
-<div class="camera" onclick="openGallery('family')">
-<img src="f1.jpeg">
-<h3>Camera Family</h3>
-</div>
+.hero-content h1{
+  font-size:clamp(38px, 6vw, 66px);
+  line-height:1.08;
+  margin-bottom:16px;
+  text-shadow:0 4px 18px rgba(0,0,0,0.35);
+}
 
-</div>
+.hero-content p{
+  font-size:clamp(18px, 2.4vw, 24px);
+  max-width:760px;
+  margin:0 auto 26px;
+  text-shadow:0 2px 10px rgba(0,0,0,0.35);
+}
 
-<h2>Zona Relax in Comune</h2>
+.hero-info-box{
+  background:rgba(255,255,255,0.14);
+  border:1px solid rgba(255,255,255,0.24);
+  border-radius:20px;
+  padding:24px;
+  max-width:760px;
+  margin:0 auto;
+  backdrop-filter:blur(8px);
+}
 
-<div class="relax" onclick="openGallery('relax')">
-<img src="z1.jpeg">
-</div>
+.hero-info-box p{
+  margin-bottom:18px;
+  font-size:19px;
+}
 
-</section>
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+}
 
-<section id="servizi">
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  padding:13px 20px;
+  border-radius:12px;
+  font-weight:700;
+  transition:0.25s;
+}
 
-<h2>Servizi</h2>
+.btn-light{
+  background:#c9a06a;
+  color:#fff;
+}
 
-<ul>
+.btn-light:hover{
+  transform:translateY(-1px);
+  opacity:0.95;
+}
 
-<li>WiFi gratuito</li>
-<li>Aria condizionata</li>
-<li>Bagno privato</li>
-<li>Cucina in comune</li>
-<li>Zona soggiorno</li>
-<li>Parcheggio in struttura gratuito</li>
-<li>Colazione inclusa gratuita</li>
+.btn-outline{
+  background:transparent;
+  color:#fff;
+  border:2px solid rgba(255,255,255,0.8);
+}
 
-</ul>
+.btn-outline:hover{
+  background:rgba(255,255,255,0.14);
+}
 
-</section>
+.btn-dark{
+  background:#5a2b00;
+  color:#fff;
+}
 
-<section id="contatti">
+.btn-dark:hover{
+  opacity:0.95;
+}
 
-<h2>Contatti</h2>
+.btn-dark-outline{
+  background:transparent;
+  color:#5a2b00;
+  border:2px solid #5a2b00;
+}
 
-<p>Telefono: +39 338 5252548</p>
+.btn-dark-outline:hover{
+  background:#5a2b00;
+  color:#fff;
+}
 
-<p>Email: info@domuseuropamatera.it</p>
+.section{
+  padding:78px 0;
+}
 
-</section>
+.section-light{
+  background:#f6f3ef;
+}
 
-<div class="whatsapp">
+.section-dark{
+  background:#efe9e3;
+}
 
-<a href="https://wa.me/393385252548">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-</a>
+.section h2{
+  text-align:center;
+  color:#5a2b00;
+  font-size:clamp(30px, 4vw, 42px);
+  margin-bottom:18px;
+}
 
-</div>
+.section-subtitle{
+  text-align:center;
+  color:#6d5a4c;
+  margin-bottom:28px;
+}
 
-<div id="gallery" class="gallery">
+.rooms-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
 
-<span onclick="closeGallery()" class="close">X</span>
+.room-card{
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 8px 26px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:0.25s;
+}
 
-<img id="gallery-img">
+.room-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.12);
+}
 
-<div id="thumbs"></div>
+.room-cover{
+  height:240px;
+  background-size:cover;
+  background-position:center;
+}
 
-</div>
+.room-body{
+  padding:22px 20px 24px;
+  text-align:center;
+}
 
-<script src="script.js"></script>
+.room-body h3{
+  color:#5a2b00;
+  font-size:26px;
+  margin-bottom:12px;
+}
 
-</body>
-</html>
+.room-body p{
+  margin-bottom:14px;
+}
+
+.room-body span{
+  color:#c9a06a;
+  font-weight:700;
+}
+
+.relax-wrapper{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+}
+
+.relax-card{
+  max-width:420px;
+  width:100%;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:18px;
+  margin-top:26px;
+}
+
+.service-item{
+  background:#fff;
+  border-radius:16px;
+  padding:22px 16px;
+  text-align:center;
+  font-weight:700;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+}
+
+.map-box{
+  overflow:hidden;
+  border-radius:22px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+#contatti p{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+.contact-buttons{
+  margin-top:24px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+}
+
+.site-footer{
+  background:#5a2b00;
+  color:#fff;
+  padding:36px 0;
+}
+
+.footer-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  text-align:center;
+}
+
+.footer-logo{
+  width:min(260px, 78%);
+  height:auto;
+}
+
+.whatsapp-fixed{
+  position:fixed;
+  right:20px;
+  bottom:24px;
+  width:62px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#25D366;
+  border-radius:50%;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  z-index:1100;
+}
+
+.whatsapp-fixed img{
+  width:34px;
+  height:34px;
+}
+
+.gallery-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:2000;
+}
+
+.gallery-modal.active{
+  display:block;
+}
+
+.gallery-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.82);
+}
+
+.gallery-content{
+  position:relative;
+  z-index:2;
+  width:min(1000px, 92%);
+  margin:5vh auto;
+  background:#fff;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 14px 40px rgba(0,0,0,0.35);
+}
+
+.gallery-close{
+  position:absolute;
+  top:10px;
+  right:16px;
+  border:none;
+  background:none;
+  color:#5a2b00;
+  font-size:38px;
+  cursor:pointer;
+}
+
+.gallery-content h3{
+  text-align:center;
+  color:#5a2b00;
+  font-size:30px;
+  margin-bottom:16px;
+}
+
+.gallery-main{
+  overflow:hidden;
+  border-radius:16px;
+  margin-bottom:16px;
+}
+
+.gallery-main img{
+  width:100%;
+  max-height:60vh;
+  object-fit:cover;
+}
+
+.gallery-thumbs{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+}
+
+.gallery-thumbs img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  border:3px solid transparent;
+}
+
+.gallery-thumbs img.active{
+  border-color:#c9a06a;
+}
+
+@media (max-width: 980px){
+  .rooms-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .services-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (max-width: 768px){
+  .logo{
+    height:70px;
+  }
+
+  .menu-toggle{
+    display:block;
+    margin-left:auto;
+  }
+
+  .site-nav{
+    display:none;
+    width:100%;
+  }
+
+  .site-nav.active{
+    display:block;
+  }
+
+  .site-nav ul{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+    padding:14px 0 10px;
+  }
+
+  .header-inner{
+    min-height:78px;
+    flex-wrap:wrap;
+  }
+
+  .hero{
+    min-height:84vh;
+  }
+
+  .hero-info-box p{
+    font-size:17px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .rooms-grid,
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-thumbs{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px){
+  .topbar{
+    font-size:13px;
+    padding:8px 10px;
+  }
+
+  .hero-content h1{
+    font-size:36px;
+  }
+
+  .hero-content p{
+    font-size:17px;
+  }
+
+  .hero-info-box{
+    padding:18px;
+  }
+
+  .btn{
+    width:100%;
+    max-width:280px;
+  }
+
+  .gallery-content{
+    padding:18px;
+  }
+
+  .gallery-main img{
+    max-height:46vh;
+  }
+}

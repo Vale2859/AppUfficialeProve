@@ -1,660 +1,147 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial, Helvetica, sans-serif;
-  color:#2f2f2f;
-  background:#f7f5f2;
-  overflow-x:hidden;
-  line-height:1.5;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-a{
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
-
-.container{
-  width:min(1140px, 92%);
-  margin:0 auto;
-}
-
-.small-container{
-  width:min(800px, 92%);
-  margin:0 auto;
-}
-
-/* TOPBAR */
-.topbar{
-  background:#c49a6c;
-  color:#fff;
-  text-align:center;
-  padding:9px 14px;
-  font-size:14px;
-  font-weight:600;
-}
-
-/* HEADER */
-.site-header{
-  background:rgba(90,43,0,0.92);
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-.header-inner{
-  min-height:90px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.logo-link{
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-}
-
-.logo{
-  height:110px;
-  width:auto;
-  display:block;
-}
-
-.site-nav ul{
-  list-style:none;
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-
-.site-nav a{
-  color:#fff;
-  font-weight:700;
-  font-size:16px;
-}
-
-.site-nav a:hover{
-  opacity:0.85;
-}
-
-.menu-toggle{
-  display:none;
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:34px;
-  cursor:pointer;
-  line-height:1;
-}
-
-/* BUTTONS */
-.prenota-btn,
-.secondary-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 20px;
-  border-radius:12px;
-  font-weight:700;
-  transition:0.25s;
-}
-
-.prenota-btn{
-  background:#c49a6c;
-  color:#fff;
-}
-
-.prenota-btn:hover{
-  opacity:0.92;
-  transform:translateY(-1px);
-}
-
-.secondary-btn{
-  background:rgba(255,255,255,0.12);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.35);
-}
-
-.secondary-btn:hover{
-  background:rgba(255,255,255,0.2);
-}
-
-.dark-outline{
-  background:transparent;
-  color:#5a2b00;
-  border:2px solid #5a2b00;
-}
-
-.dark-outline:hover{
-  background:#5a2b00;
-  color:#fff;
-}
-
-/* HERO */
-.hero-slider{
-  position:relative;
-  min-height:88vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.slider{
-  position:absolute;
-  inset:0;
-}
-
-.slider img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  animation:sliderFade 35s infinite;
-}
-
-.slider img:nth-child(1){ animation-delay:0s; }
-.slider img:nth-child(2){ animation-delay:5s; }
-.slider img:nth-child(3){ animation-delay:10s; }
-.slider img:nth-child(4){ animation-delay:15s; }
-.slider img:nth-child(5){ animation-delay:20s; }
-.slider img:nth-child(6){ animation-delay:25s; }
-.slider img:nth-child(7){ animation-delay:30s; }
-
-@keyframes sliderFade{
-  0%{opacity:0;}
-  5%{opacity:1;}
-  14%{opacity:1;}
-  20%{opacity:0;}
-  100%{opacity:0;}
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(rgba(0,0,0,0.35), rgba(90,43,0,0.5));
-  z-index:1;
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:40px 0;
-}
-
-.hero-content h1{
-  font-size:clamp(34px, 6vw, 60px);
-  line-height:1.1;
-  margin-bottom:16px;
-  text-shadow:0 3px 16px rgba(0,0,0,0.4);
-}
-
-.hero-content p{
-  font-size:clamp(17px, 2.5vw, 22px);
-  max-width:720px;
-  margin:0 auto 26px;
-  color:#f5eee8;
-  text-shadow:0 2px 10px rgba(0,0,0,0.35);
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-}
-
-.hero-buttons-column{
-  flex-direction:column;
-  align-items:center;
-}
-
-.prenotazione-info{
-  font-size:20px;
-  font-weight:600;
-  margin-bottom:6px;
-  color:#fff;
-  text-align:center;
-  max-width:760px;
-  text-shadow:0 2px 10px rgba(0,0,0,0.35);
-}
-
-.hero-contact-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-}
-
-/* SECTIONS */
-.section{
-  padding:75px 0;
-}
-
-.alt-bg{
-  background:#efebe7;
-}
-
-.section h2{
-  text-align:center;
-  font-size:clamp(28px, 4vw, 40px);
-  margin-bottom:28px;
-  color:#5a2b00;
-}
-
-.section p{
-  font-size:18px;
-  text-align:center;
-  margin-bottom:16px;
-}
-
-.section-subtitle{
-  text-align:center;
-  color:#6d5a4c;
-  font-size:17px;
-  margin-top:-8px;
-  margin-bottom:24px;
-}
-
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:24px;
-  margin-top:30px;
-}
-
-.card{
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 8px 22px rgba(0,0,0,0.08);
-  text-align:center;
-  transition:0.25s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-}
-
-.room-card{
-  cursor:pointer;
-  position:relative;
-}
-
-.room-card:hover{
-  box-shadow:0 12px 28px rgba(0,0,0,0.12);
-}
-
-.card-image{
-  height:220px;
-  background-size:cover;
-  background-position:center;
-}
-
-.room-1{
-  background-image:url("1.jpeg");
-}
-
-.room-2{
-  background-image:url("2.jpeg");
-}
-
-.room-3{
-  background-image:url("3.jpeg");
-}
-
-.card h3{
-  font-size:26px;
-  margin:20px 18px 10px;
-  color:#5a2b00;
-}
-
-.card p{
-  font-size:17px;
-  padding:0 18px 10px;
-  margin-bottom:0;
-}
-
-.card-link-text{
-  display:inline-block;
-  margin:0 0 22px;
-  color:#c49a6c;
-  font-weight:700;
-}
-
-/* SERVICES */
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:18px;
-  margin-top:30px;
-}
-
-.service-item{
-  background:#fff;
-  border-radius:14px;
-  padding:20px;
-  text-align:center;
-  font-weight:700;
-  box-shadow:0 4px 12px rgba(0,0,0,0.06);
-}
-
-/* MAP */
-.map-box{
-  overflow:hidden;
-  border-radius:20px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.1);
-}
-
-/* CONTACT */
-.contact-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-  justify-content:center;
-  margin-top:22px;
-}
-
-/* FOOTER */
-.site-footer{
-  background:#5a2b00;
-  color:#fff;
-  padding:38px 0;
-}
-
-.footer-inner{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  text-align:center;
-}
-
-.footer-logo{
-  width:min(260px, 78%);
-  height:auto;
-}
-
-/* WHATSAPP */
-.whatsapp-container{
-  position:fixed;
-  right:20px;
-  bottom:25px;
-  z-index:999;
-}
-
-.whatsapp-button{
-  display:flex;
-  align-items:center;
-  background:#25D366;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:50px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.25);
-  transition:0.25s;
-}
-
-.whatsapp-button:hover{
-  transform:scale(1.04);
-}
-
-.whatsapp-button img{
-  width:28px;
-  margin-right:10px;
-}
-
-.whatsapp-text{
-  font-weight:700;
-}
-
-/* GALLERY MODAL */
-.gallery-modal{
-  position:fixed;
-  inset:0;
-  display:none;
-  z-index:2000;
-}
-
-.gallery-modal.active{
-  display:block;
-}
-
-.gallery-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.8);
-}
-
-.gallery-content{
-  position:relative;
-  z-index:2;
-  width:min(1000px, 92%);
-  margin:5vh auto;
-  background:#fff;
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.35);
-}
-
-.gallery-close{
-  position:absolute;
-  top:12px;
-  right:16px;
-  border:none;
-  background:none;
-  font-size:36px;
-  cursor:pointer;
-  color:#5a2b00;
-}
-
-.gallery-content h3{
-  text-align:center;
-  color:#5a2b00;
-  font-size:30px;
-  margin-bottom:18px;
-}
-
-.gallery-main-image{
-  overflow:hidden;
-  border-radius:16px;
-  margin-bottom:16px;
-}
-
-.gallery-main-image img{
-  width:100%;
-  max-height:60vh;
-  object-fit:cover;
-}
-
-.gallery-thumbs{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:12px;
-}
-
-.gallery-thumbs img{
-  width:100%;
-  height:120px;
-  object-fit:cover;
-  border-radius:12px;
-  cursor:pointer;
-  border:3px solid transparent;
-}
-
-.gallery-thumbs img.active{
-  border-color:#c49a6c;
-}
-
-/* MOBILE */
-@media (max-width: 900px){
-  .cards{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .services-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .site-nav ul{
-    gap:18px;
-  }
-
-  .site-nav a{
-    font-size:15px;
-  }
-
-  .logo{
-    height:92px;
-  }
-}
-
-@media (max-width: 768px){
-  .topbar{
-    font-size:13px;
-    padding:8px 10px;
-  }
-
-  .header-inner{
-    min-height:82px;
-    flex-wrap:wrap;
-  }
-
-  .menu-toggle{
-    display:block;
-    margin-left:auto;
-  }
-
-  .site-nav{
-    display:none;
-    width:100%;
-  }
-
-  .site-nav.active{
-    display:block;
-  }
-
-  .site-nav ul{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:14px;
-    padding:14px 0 8px;
-  }
-
-  .hero-slider{
-    min-height:82vh;
-  }
-
-  .logo{
-    height:75px;
-  }
-
-  .section{
-    padding:58px 0;
-  }
-
-  .cards,
-  .services-grid{
-    grid-template-columns:1fr;
-  }
-
-  .card-image{
-    height:210px;
-  }
-
-  .prenotazione-info{
-    font-size:17px;
-  }
-
-  .hero-contact-actions{
-    flex-direction:column;
-    width:100%;
-    align-items:center;
-  }
-
-  .whatsapp-text{
-    display:none;
-  }
-
-  .whatsapp-button{
-    padding:14px;
-    border-radius:50%;
-  }
-
-  .whatsapp-button img{
-    margin-right:0;
-    width:30px;
-  }
-
-  .gallery-content{
-    margin:4vh auto;
-    padding:18px;
-  }
-
-  .gallery-content h3{
-    font-size:24px;
-    padding-right:24px;
-  }
-
-  .gallery-thumbs{
-    grid-template-columns:repeat(2, 1fr);
-  }
-
-  .gallery-thumbs img{
-    height:100px;
-  }
-}
-
-@media (max-width: 480px){
-  .hero-content h1{
-    font-size:34px;
-  }
-
-  .hero-content p{
-    font-size:16px;
-  }
-
-  .secondary-btn{
-    width:100%;
-    max-width:300px;
-  }
-
-  .section h2{
-    margin-bottom:22px;
-  }
-
-  .section p{
-    font-size:17px;
-  }
-
-  .gallery-thumbs{
-    grid-template-columns:1fr 1fr;
-  }
-}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domus Europa Matera</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topbar">
+Prenotando direttamente in struttura hai il <strong>10% di sconto</strong> rispetto a Booking
+</div>
+
+<header>
+
+<img src="logotrasparente.png" class="logo">
+
+<nav>
+<a href="#home">Home</a>
+<a href="#camere">Camere</a>
+<a href="#servizi">Servizi</a>
+<a href="#contatti">Contatti</a>
+</nav>
+
+</header>
+
+<section class="hero" id="home">
+
+<div class="slider">
+
+<img src="1.jpeg">
+<img src="2.jpeg">
+<img src="3.jpeg">
+<img src="4.jpeg">
+<img src="5.jpeg">
+<img src="6.jpeg">
+<img src="7.jpeg">
+
+</div>
+
+<div class="hero-text">
+
+<h1>Domus Europa Matera</h1>
+
+<p>
+Affittacamere elegante e accogliente nel cuore della splendida città dei Sassi.
+</p>
+
+<p class="prenota">
+Per ulteriori informazioni o prenotazioni contattaci via mail o WhatsApp
+</p>
+
+<a class="btn" href="mailto:info@domuseuropamatera.it">
+Email
+</a>
+
+<a class="btn" href="https://wa.me/393385252548">
+WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<section id="camere">
+
+<h2>Le Camere</h2>
+
+<div class="camere">
+
+<div class="camera" onclick="openGallery('elegance')">
+<img src="e1.jpeg">
+<h3>Camera Elegance</h3>
+</div>
+
+<div class="camera" onclick="openGallery('comfort')">
+<img src="c1.jpeg">
+<h3>Camera Comfort</h3>
+</div>
+
+<div class="camera" onclick="openGallery('family')">
+<img src="f1.jpeg">
+<h3>Camera Family</h3>
+</div>
+
+</div>
+
+<h2>Zona Relax in Comune</h2>
+
+<div class="relax" onclick="openGallery('relax')">
+<img src="z1.jpeg">
+</div>
+
+</section>
+
+<section id="servizi">
+
+<h2>Servizi</h2>
+
+<ul>
+
+<li>WiFi gratuito</li>
+<li>Aria condizionata</li>
+<li>Bagno privato</li>
+<li>Cucina in comune</li>
+<li>Zona soggiorno</li>
+<li>Parcheggio in struttura gratuito</li>
+<li>Colazione inclusa gratuita</li>
+
+</ul>
+
+</section>
+
+<section id="contatti">
+
+<h2>Contatti</h2>
+
+<p>Telefono: +39 338 5252548</p>
+
+<p>Email: info@domuseuropamatera.it</p>
+
+</section>
+
+<div class="whatsapp">
+
+<a href="https://wa.me/393385252548">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+</div>
+
+<div id="gallery" class="gallery">
+
+<span onclick="closeGallery()" class="close">X</span>
+
+<img id="gallery-img">
+
+<div id="thumbs"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

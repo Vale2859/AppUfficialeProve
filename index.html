@@ -1,193 +1,215 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domus Europa Matera</title>
-  <meta name="description" content="Domus Europa Matera - Affittacamere elegante e accogliente a Matera.">
-  <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Domus Europa Matera</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-  <div class="topbar">
-    Prenotando direttamente in struttura hai il <strong>10% di sconto</strong> rispetto a Booking
-  </div>
+<div class="topbar">
+Prenotando direttamente in struttura hai il <strong>10% di sconto</strong> rispetto a Booking
+</div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#home" class="logo-link">
-        <img src="logotrasparente.png" alt="Domus Europa Matera" class="logo">
-      </a>
+<header>
 
-      <button class="menu-toggle" id="menu-toggle" aria-label="Apri menu">
-        ☰
-      </button>
+<div class="container header">
 
-      <nav class="site-nav" id="site-nav">
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#camere">Camere</a></li>
-          <li><a href="#servizi">Servizi</a></li>
-          <li><a href="#mappa">Dove siamo</a></li>
-          <li><a href="#contatti">Contatti</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<img src="logotrasparente.png" class="logo">
 
-  <main>
+<nav>
 
-    <section class="hero" id="home">
-      <div class="hero-slider">
-        <img src="1.jpeg" alt="Foto struttura 1">
-        <img src="2.jpeg" alt="Foto struttura 2">
-        <img src="3.jpeg" alt="Foto struttura 3">
-        <img src="4.jpeg" alt="Foto struttura 4">
-        <img src="5.jpeg" alt="Foto struttura 5">
-        <img src="6.jpeg" alt="Foto struttura 6">
-        <img src="7.jpeg" alt="Foto struttura 7">
-      </div>
+<a href="#">Home</a>
+<a href="#camere">Camere</a>
+<a href="#servizi">Servizi</a>
+<a href="#contatti">Contatti</a>
 
-      <div class="hero-overlay"></div>
+</nav>
 
-      <div class="hero-content container">
-        <h1>Domus Europa Matera</h1>
-        <p>
-          Affittacamere elegante e accogliente nel cuore della splendida città dei Sassi.
-        </p>
+</div>
 
-        <div class="hero-info-box">
-          <p>Per ulteriori informazioni o prenotazioni contattaci via mail o WhatsApp</p>
+</header>
 
-          <div class="hero-actions">
-            <a href="mailto:info@domuseuropamatera.it" class="btn btn-light">Email</a>
-            <a href="https://wa.me/393385252548" target="_blank" class="btn btn-outline">WhatsApp</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section-light" id="camere">
-      <div class="container">
-        <h2>Le Camere</h2>
-        <p class="section-subtitle">Clicca su una camera per vedere tutte le foto</p>
+<section class="hero">
 
-        <div class="rooms-grid">
-          <article class="room-card" data-room="elegance">
-            <div class="room-cover" style="background-image: url('e1.jpeg');"></div>
-            <div class="room-body">
-              <h3>Camera Elegance</h3>
-              <p>Camera matrimoniale elegante con bagno privato e comfort pensati per il relax.</p>
-              <span>Guarda le foto</span>
-            </div>
-          </article>
+<div class="slider">
 
-          <article class="room-card" data-room="comfort">
-            <div class="room-cover" style="background-image: url('c1.jpeg');"></div>
-            <div class="room-body">
-              <h3>Camera Comfort</h3>
-              <p>Camera luminosa e accogliente, ideale per coppie o viaggiatori in cerca di tranquillità.</p>
-              <span>Guarda le foto</span>
-            </div>
-          </article>
+<img src="1.jpeg">
+<img src="2.jpeg">
+<img src="3.jpeg">
+<img src="4.jpeg">
+<img src="5.jpeg">
+<img src="6.jpeg">
+<img src="7.jpeg">
 
-          <article class="room-card" data-room="family">
-            <div class="room-cover" style="background-image: url('f1.jpeg');"></div>
-            <div class="room-body">
-              <h3>Camera Family</h3>
-              <p>Soluzione più spaziosa, perfetta per famiglie o per soggiorni più lunghi.</p>
-              <span>Guarda le foto</span>
-            </div>
-          </article>
-        </div>
+</div>
 
-        <div class="relax-wrapper">
-          <article class="room-card relax-card" data-room="relax">
-            <div class="room-cover" style="background-image: url('z1.jpeg');"></div>
-            <div class="room-body">
-              <h3>Zona Relax in Comune</h3>
-              <p>Spazio comune accogliente con cucina e zona soggiorno, perfetto per rilassarsi durante il soggiorno.</p>
-              <span>Guarda le foto</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+<div class="hero-overlay"></div>
 
-    <section class="section section-dark" id="servizi">
-      <div class="container">
-        <h2>Servizi</h2>
+<div class="hero-text">
 
-        <div class="services-grid">
-          <div class="service-item">WiFi gratuito</div>
-          <div class="service-item">Bagno privato</div>
-          <div class="service-item">Aria condizionata</div>
-          <div class="service-item">Cucina in comune</div>
-          <div class="service-item">Zona soggiorno</div>
-          <div class="service-item">Check-in flessibile</div>
-          <div class="service-item">Parcheggio in struttura gratuito</div>
-          <div class="service-item">Colazione inclusa gratuita</div>
-        </div>
-      </div>
-    </section>
+<h1>Domus Europa Matera</h1>
 
-    <section class="section section-light" id="mappa">
-      <div class="container">
-        <h2>Dove Siamo</h2>
-        <div class="map-box">
-          <iframe
-            src="https://maps.google.com/maps?q=Matera&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="420"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </section>
+<p>
+Affittacamere elegante e accogliente nel cuore della splendida città dei Sassi
+</p>
 
-    <section class="section section-light" id="contatti">
-      <div class="container small-container">
-        <h2>Contatti</h2>
-        <p><strong>Telefono:</strong> +39 338 5252548</p>
-        <p><strong>Email:</strong> info@domuseuropamatera.it</p>
+<p class="prenota">
+Per ulteriori informazioni o prenotazioni contattaci via mail o WhatsApp
+</p>
 
-        <div class="contact-buttons">
-          <a href="mailto:info@domuseuropamatera.it" class="btn btn-dark">Scrivici via Email</a>
-          <a href="https://wa.me/393385252548" target="_blank" class="btn btn-dark-outline">Scrivici su WhatsApp</a>
-        </div>
-      </div>
-    </section>
+<div class="hero-buttons">
 
-  </main>
+<a href="mailto:info@domuseuropamatera.it" class="btn">
+Email
+</a>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <img src="logotrasparente.png" alt="Domus Europa Matera" class="footer-logo">
-      <p>© Domus Europa Matera</p>
-    </div>
-  </footer>
+<a href="https://wa.me/393385252548" class="btn-outline">
+WhatsApp
+</a>
 
-  <a href="https://wa.me/393385252548" target="_blank" class="whatsapp-fixed" aria-label="WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+</div>
 
-  <div class="gallery-modal" id="gallery-modal">
-    <div class="gallery-overlay" id="gallery-overlay"></div>
+</div>
 
-    <div class="gallery-content">
-      <button class="gallery-close" id="gallery-close" aria-label="Chiudi">×</button>
-      <h3 id="gallery-title">Galleria</h3>
+</section>
 
-      <div class="gallery-main">
-        <img id="gallery-current-image" src="" alt="Foto camera">
-      </div>
 
-      <div class="gallery-thumbs" id="gallery-thumbs"></div>
-    </div>
-  </div>
+<section id="camere" class="section">
 
-  <script src="script.js"></script>
+<h2>Le Camere</h2>
+
+<div class="camere">
+
+<div class="camera" onclick="openGallery('elegance')">
+
+<img src="e1.jpeg">
+
+<h3>Camera Elegance</h3>
+
+<p>
+Camera matrimoniale elegante con bagno privato e comfort pensati per il relax.
+</p>
+
+<span>Guarda le foto</span>
+
+</div>
+
+
+<div class="camera" onclick="openGallery('comfort')">
+
+<img src="c1.jpeg">
+
+<h3>Camera Comfort</h3>
+
+<p>
+Camera luminosa e accogliente, ideale per coppie o viaggiatori in cerca di tranquillità.
+</p>
+
+<span>Guarda le foto</span>
+
+</div>
+
+
+<div class="camera" onclick="openGallery('family')">
+
+<img src="f1.jpeg">
+
+<h3>Camera Family</h3>
+
+<p>
+Soluzione più spaziosa perfetta per famiglie o soggiorni più lunghi.
+</p>
+
+<span>Guarda le foto</span>
+
+</div>
+
+</div>
+
+
+
+<div class="relax" onclick="openGallery('relax')">
+
+<img src="z1.jpeg">
+
+<h3>Zona Relax in Comune</h3>
+
+<p>
+Spazio comune accogliente con cucina e zona soggiorno perfetto per rilassarsi durante il soggiorno
+</p>
+
+<span>Guarda le foto</span>
+
+</div>
+
+
+</section>
+
+
+<section id="servizi" class="section servizi">
+
+<h2>Servizi</h2>
+
+<div class="servizi-grid">
+
+<div>WiFi gratuito</div>
+<div>Aria condizionata</div>
+<div>Bagno privato</div>
+<div>Cucina in comune</div>
+<div>Zona soggiorno</div>
+<div>Check-in flessibile</div>
+<div>Parcheggio gratuito</div>
+<div>Colazione inclusa</div>
+
+</div>
+
+</section>
+
+
+
+<section id="contatti" class="section contatti">
+
+<h2>Contatti</h2>
+
+<p>Telefono: +39 338 5252548</p>
+
+<p>Email: info@domuseuropamatera.it</p>
+
+</section>
+
+
+
+<div class="whatsapp">
+
+<a href="https://wa.me/393385252548">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+
+</a>
+
+</div>
+
+
+<div id="gallery" class="gallery">
+
+<span onclick="closeGallery()" class="close">×</span>
+
+<img id="gallery-img">
+
+<div id="thumbs"></div>
+
+</div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
